@@ -1,0 +1,13 @@
+<template>
+    <div class="header-column">
+        <p class="field-title" title={field.name}>{field.name}</p>
+        <template if:true={field.isLink}>
+            <p class={fieldClasses}>
+                <a href={field.link}>{field.value}</a>
+            </p>
+        </template>
+        <template if:false={field.isLink}>
+            <p class={fieldClasses}>{field.value}</p>
+        </template>
+    </div>
+</template>

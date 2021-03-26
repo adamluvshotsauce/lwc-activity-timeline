@@ -1,0 +1,34 @@
+<template>
+    <lightning-tile type={type} class="c-detail-container">
+        <template if:true={fields}>
+            <lightning-layout multiple-rows="true">
+                <template for:each={fields} for:item="field">
+                    <!-- CONDITIONAL FIELD RENDERING -->
+                    <template if:true={field.conditional}>
+                        <template if:true={field.value}>
+                            <lightning-layout-item key={field.id} 
+                                                   size={size}
+                                                   large-device-size={largeDeviceSize}
+                                                   medium-device-size={mediumDeviceSize} 
+                                                   small-device-size={smallDeviceSize} 
+                                                   padding="around-small">
+                                <c-output-field field={field} truncate={truncate}></c-output-field>
+                            </lightning-layout-item>
+                        </template>
+                    </template>
+                    <!-- NON-CONDITIONAL FIELD RENDERING -->
+                    <template if:false={field.conditional}>
+                        <lightning-layout-item key={field.id} 
+                                               size={size}
+                                               large-device-size={largeDeviceSize}
+                                               medium-device-size={mediumDeviceSize} 
+                                               small-device-size={smallDeviceSize}  
+                                               padding="around-small">
+                            <c-output-field field={field} truncate={truncate}></c-output-field>
+                        </lightning-layout-item>
+                    </template>
+                </template>
+            </lightning-layout>
+        </template>
+    </lightning-tile>
+</template>

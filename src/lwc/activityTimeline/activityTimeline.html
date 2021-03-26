@@ -1,0 +1,34 @@
+<template>
+    <lightning-card>
+        <div slot="title">
+            <h1 class="slds-var-p-around_xx-small slds-text-title_caps">{title}</h1>
+        </div>
+        <ul class="slds-var-p-around_medium">
+            <template if:true={dataAvailable}>
+                <!-- TIMELINE -->
+                <template for:each={activities} for:item="activity">
+                    <c-activity-timeline-item key={activity.Id} 
+                                              activity-id={activity.Id}
+                                              type={activity.type}
+                                              icon-name={activity.iconName}
+                                              title={activity.title}
+                                              what-id={activity.whatId}
+                                              activity-date-time={activity.activityDateTime}
+                                              created-by-id={activity.creator.Id}
+                                              created-by-name={activity.creator.Name}
+                                              item-details={activity.itemDetails}
+                                              truncate-details={activity.truncate}>
+                    </c-activity-timeline-item>
+                </template>
+            </template>
+            <!-- PLACEHOLDER -->
+            <template if:false={dataAvailable}>
+                <c-placeholder svgname={placeholderSvgName}
+                               heading={placeholderHeading}
+                               message={placeholderMessage}
+                               size={placeholderSize}>
+                </c-placeholder>
+            </template>
+        </ul>
+    </lightning-card>
+</template>

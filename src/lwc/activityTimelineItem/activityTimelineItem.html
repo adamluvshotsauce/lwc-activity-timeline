@@ -1,0 +1,51 @@
+<template>
+    <li>
+        <div class={itemClass}>
+            <span class="slds-assistive-text">{type}</span>
+            <div class="slds-media">
+                <div class="slds-media__figure">
+                    <lightning-button-icon icon-name={itemButtonIcon}
+                                           variant="bare" 
+                                           alternative-text="switch" 
+                                           title="Switch"
+                                           onclick={toggleDetails}>
+                    </lightning-button-icon>
+                    <div class={iconClass} title={type}>
+                        <lightning-icon icon-name={iconName} size="small"></lightning-icon>
+                    </div>
+                </div>
+                <div class="slds-media__body">
+                    <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                        <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                            <h3 class="slds-truncate" title={title}>
+                                <a href={activityLink}>
+                                    <strong>{title}</strong>
+                                </a>
+                            </h3>
+                        </div>
+                        <div class="slds-timeline__actions_inline">
+                            <p class="slds-timeline__date">{timelineDate}</p>
+                        </div>
+                    </div>
+                    <p class="slds-var-m-horizontal_xx-small">
+                        <a href={creatorLink}>
+                            {creatorText}
+                        </a>&nbsp;{activityText}
+                    </p>
+                    <template if:true={showDetails}>
+                        <div class="slds-var-m-around_x-small">
+                            <c-activity-timeline-item-detail fields={itemDetails} 
+                                                             type="standard"
+                                                             size="12" 
+                                                             large-device-size="12" 
+                                                             medium-device-size="12" 
+                                                             small-device-size="12"
+                                                             truncate={truncateDetails}>
+                            </c-activity-timeline-item-detail>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </li>
+</template>
